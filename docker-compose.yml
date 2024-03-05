@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  gym_db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - gym_db_data:/var/lib/postgresql/data
+
+  gym_adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 8085:8080
+
+volumes:
+  gym_db_data:
